@@ -11,6 +11,8 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000",
 });
 
+// ---------------- CALLS ----------------
+
 export async function getCalls(): Promise<SupportCall[]> {
   const res = await api.get<SupportCall[]>("/calls/");
   return res.data;
@@ -21,27 +23,49 @@ export async function getCallById(id: string): Promise<SupportCall> {
   return res.data;
 }
 
+// ---------------- SUMMARY ----------------
+
 export async function getSummaryStats(): Promise<SummaryStats> {
   const res = await api.get<SummaryStats>("/stats/summary");
   return res.data;
 }
 
+// ---------------- DISTRIBUTIONS ----------------
+
 export async function getSentimentStats(): Promise<DistributionItem[]> {
-  const res = await api.get<DistributionItem[]>("/stats/sentiment");
-  return res.data;
+  const res = await api.get<any[]>("/stats/sentiment");
+  return res.data.map(item => ({
+    label: item.sentiment,
+    count: item.count,
+  }));
 }
 
 export async function getToneStats(): Promise<DistributionItem[]> {
-  const res = await api.get<DistributionItem[]>("/stats/tone");
-  return res.data;
+  const res = await api.get<any[]>("/stats/tone");
+  return res.data.map(item => ({
+    label: item.tone,
+    count: item.count,
+  }));
 }
 
 export async function getIssueStats(): Promise<DistributionItem[]> {
-  const res = await api.get<DistributionItem[]>("/stats/issues");
-  return res.data;
+  const res = await api.get<any[]>("/stats/issues");
+  return res.data.map(item => ({
+    label: item.issue_type,
+    count: item.count,
+  }));
 }
 
+// ---------------- INSIGHTS ----------------
+
 export async function getInsights(callId: string): Promise<Insight> {
-  const res = await api.get<Insight>(`/insights/${callId}`);
-  return res.data;
+  const res = await api.get<any>(`/insights/${callId}`);
+
+  return {
+    call_id: callId,
+    risk_level: res.data.risk_level,
+    summary: res.data.short_summary,               
+    recommended_action: res.data.suggested_action, 
+    frustration_score: res.data.frustration_score,
+  };
 }

@@ -113,13 +113,13 @@ const DashboardPage: React.FC = () => {
         {/* ✅ FIXED — now always safe */}
         <MetricCard
           label="Avg Duration"
-          value={`${safeToFixed(summary?.average_duration, 1)} sec`}
+          value={`${safeToFixed(summary?.avg_duration, 1)} sec`}
         />
 
         {/* ✅ FIXED — now always safe */}
         <MetricCard
           label="Avg Frustration"
-          value={safeToFixed(summary?.average_frustration, 2)}
+          value={safeToFixed(summary?.avg_frustration, 2)}
         />
       </section>
 

@@ -18,8 +18,8 @@ export interface SummaryStats {
   total_calls: number;
   resolved_calls: number;
   unresolved_calls: number;
-  average_duration: number;
-  average_frustration: number;
+  avg_duration: number;
+  avg_frustration: number;
 }
 
 export interface DistributionItem {
