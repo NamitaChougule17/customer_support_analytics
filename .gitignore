@@ -11,5 +11,3 @@ frontend/dist/
 .env
 .env.local
 *.env
-
-config.py
