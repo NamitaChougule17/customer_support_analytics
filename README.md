@@ -3,6 +3,8 @@
 An end-to-end analytics platform for customer support call data, designed to aggregate operational KPIs and generate actionable insights through a FastAPI backend and an interactive dashboard. The system supports rule-based insights today and is architected to seamlessly integrate AI/LLM-powered analysis in the future.
 
 <img width="1601" height="782" alt="image" src="https://github.com/user-attachments/assets/bdeb6acb-bb8d-4c0f-96ff-87c6aaf43ee9" />
+<img width="1565" height="917" alt="image" src="https://github.com/user-attachments/assets/4c05877d-314d-4fec-803e-a2d372c8aa83" />
+
 
 
 ##  Features
