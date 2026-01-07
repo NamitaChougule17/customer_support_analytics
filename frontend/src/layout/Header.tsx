@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       <div>
         <h1 className="header-title">Customer Support Call Analytics</h1>
         <p className="header-subtitle">
-          React + TypeScript · FastAPI · Supabase · AI-ready insights
+          React + TypeScript · FastAPI · Python · Supabase · Analytics · AI-ready insights
         </p>
       </div>
     </header>

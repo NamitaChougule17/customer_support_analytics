@@ -7,8 +7,21 @@ import type {
   Insight,
 } from "./types";
 
+// Use /api prefix for Vercel deployment, or custom URL for development
+const getBaseURL = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  // In production (Vercel), use /api prefix
+  if (import.meta.env.PROD) {
+    return "/api";
+  }
+  // In development, use local backend
+  return "http://127.0.0.1:8000";
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000",
+  baseURL: getBaseURL(),
 });
 
 // ---------------- CALLS ----------------
